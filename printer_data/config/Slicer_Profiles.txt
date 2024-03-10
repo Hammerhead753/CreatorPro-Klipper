@@ -1,0 +1,28 @@
+#Printer_General
+#Bed Size: 227x148x150
+#Extruders: 2
+#Gcode_Flavor: Klipper
+#Gcode_Thumbnails: 300x300/PNG
+
+#Printer_Custom_Gcode
+#Start_Gcode:
+  #M140 S0   ; 
+  #M104 S0 T0; Stop slicer generating its own heater settings
+  #M104 S0 T1;
+  #START_PRINT BED_TEMP=[first_layer_bed_temperature] EXTRUDER_TEMP={first_layer_temperature[0]} EXTRUDER1={first_layer_temperature[1]} EXTRUDERS_ENABLED={(filament_preset[0] != filament_preset[1]? 2 : 1)} INITIAL_EXTRUDER=[initial_extruder]
+
+#End_Gcode:
+  #END_PRINT
+
+#Tool_Change_Gcode:
+ #T[next_extruder]
+
+#Color_Change_Gcode:
+  #M601
+
+
+
+#Orca_Slicer_Single_Extruder
+#Machine_Start_Gcode_Right_Nozzle_Only:
+  #START_PRINT BED_TEMP=[bed_temperature_initial_layer_single] EXTRUDER_TEMP=[nozzle_temperature_initial_layer] CHAMBER_TEMP=[chamber_temperature]
+  ###### Replace EXTRUDER_TEMP=[nozzle_temperature_initial_layer] for EXTRUDER1_TEMP=[nozzle_temperature_initial_layer] to use the left nozzle
