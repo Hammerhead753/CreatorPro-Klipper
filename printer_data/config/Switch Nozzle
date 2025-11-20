@@ -31,3 +31,7 @@ gcode:
         M109 T1 S{target_temp}       ; Heat extruder 1 and wait
         T1                           ; Select extruder 1
     {% endif %}
+
+
+#########PrusaSlicer_Tool_Change_GCODE##########
+##_SWITCH_NOZZLE EXTRUDER=[tool_number] TEMP=[tool_temp] STANDBY=[standby_temp]_##
